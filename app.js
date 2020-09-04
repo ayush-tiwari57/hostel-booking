@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //routes
-app.use("/signup",require("./routes/signup"));
-app.use("/login",require("./routes/login"));
+app.use(require("./routes"));
+app.use(require("./routes/admin"));
 
 app.listen(3000, console.log('listening on port 3000'));
