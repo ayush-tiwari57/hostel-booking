@@ -12,7 +12,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //routes
-app.use(require("./routes"));
-app.use(require("./routes/admin"));
+app.use(require("./routes/config"));
+app.use(require("./routes/student_routes"));
+app.use(require("./routes/admin_routes"));
 
 app.listen(3000, console.log('listening on port 3000'));
