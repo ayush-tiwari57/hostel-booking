@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const user = require("../models/user");
+const user = require("../../models/user");
 const bcrypt = require("bcrypt");
 
-router.post("/login",async (req,res) =>{
+router.post("/",async (req,res) =>{
     try
     {
         const{
