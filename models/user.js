@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const userschema = new mongoose.Schema({
+    _id: mongoose.Schema.type.ObjectId,
     name: {
         type: String,
         required: true
@@ -16,6 +17,10 @@ const userschema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    roomno: {
+        type: Number,
+        default: null
     }
 });
 module.exports = mongoose.model('user',userschema);

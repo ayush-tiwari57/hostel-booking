@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const user = require("../models/user");
 const bcrypt = require("bcrypt");
 
-router.post("/",async (req,res) =>{
+router.post("/login",async (req,res) =>{
     try
     {
         const{
