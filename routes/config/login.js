@@ -11,9 +11,12 @@ router.post("/",async (req,res) =>{
         rollno,
         password,
         }=req.body;
-        let data = await user.findOne({rollno});    
-        if(data.length>0){
+        // console.log(rollno);
+        let data = await user.findOne({rollno});  
+        console.log(data);    
+        if(data){
             let exist = await bcrypt.compare(password,data.password);
+            console.log(exist);
             if(exist===true){
                 let token = await jwt.sign({
                     rollno: data.rollno,

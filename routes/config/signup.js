@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const mongoose = require("mongoose");
 const user = require("../../models//user");
 const bcrypt = require("bcrypt");
 
@@ -22,6 +23,7 @@ router.post("/",async (req,res) => {
                 let hashed_passsword = await bcrypt.hash(password,10);
                 password = hashed_passsword;
                 const User = new user({
+                    _id: mongoose.Types.ObjectId(),
                     name,
                     email,
                     rollno,
