@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const user = require("../models/user")
 
-const roomschema = new mongoose.Schema({
+const roomschema = mongoose.Schema({
     roomno: {
         type: Number
     },
