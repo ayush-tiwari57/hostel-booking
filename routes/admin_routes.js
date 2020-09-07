@@ -23,11 +23,12 @@ router.post("/addroom",auth,async (req,res) =>{
             let info = await newroom.save();
             res.send({
                 message: "new room added",
-                data: info
+                data: newroom
             });
         }
     }
     catch(err){
+        console.log(err);
         res.status(500).send({
             message: 'Somthing went wrong'
         });
