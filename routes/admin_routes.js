@@ -10,8 +10,9 @@ router.post("/addroom",auth,async (req,res) =>{
     try{
         const roomno = req.body.roomno;
         let data = await room.findOne({roomno});
+        // console.log(data);
         if(data){
-            res.send({
+            res.status(409).send({
                 message: "Room already exists"
             });
         }
@@ -19,9 +20,10 @@ router.post("/addroom",auth,async (req,res) =>{
             const newroom = new room({
                 roomno
             });
+            let info = await newroom.save();
             res.send({
                 message: "new room added",
-                data: newroom
+                data: info
             });
         }
     }
