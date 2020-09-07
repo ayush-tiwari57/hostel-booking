@@ -1,8 +1,12 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
-const room = require("../../models/room");
+const auth = require("./config/auth");
+const room = require("../models/room");
 
-router.post("/addroom",async (req,res) =>{
+
+// post request for adding new room
+// required data- roomno
+router.post("/addroom",auth,async (req,res) =>{
     try{
         const roomno = req.body.roomno;
         let data = await room.findOne({roomno});
@@ -12,7 +16,13 @@ router.post("/addroom",async (req,res) =>{
             });
         }
         else{
-            
+            const newroom = new room({
+                roomno
+            });
+            res.send({
+                message: "new room added",
+                data: newroom
+            });
         }
     }
     catch(err){
