@@ -11,13 +11,12 @@ module.exports = async (req,res,next) => {
         let user = await jwt.verify(token,"123");
         console.log(user);
         req.userdata = user;
-        next();
+        next()
     }
     catch(err){
-        return res.status(500).send({
+        res.status(500).send({
             message: "Somethng went wrong"
         });
     }
 
-    next();
 }
