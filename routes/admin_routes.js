@@ -23,7 +23,7 @@ router.post("/addroom",auth,async (req,res) =>{
             let info = await newroom.save();
             res.send({
                 message: "new room added",
-                data: newroom
+                data: info
             });
         }
     }
