@@ -5,7 +5,7 @@ const roomschema = mongoose.Schema({
     roomno: {
         type: Number
     },
-    student_no: {
+    student_count: {
         type: Number,
         default: 0
     },
