@@ -17,6 +17,10 @@ const userschema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    roomno: {
+        type: Number,
+        default: 0
     }
 });
 module.exports = mongoose.model('user',userschema);

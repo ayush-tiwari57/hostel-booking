@@ -10,11 +10,8 @@ const roomschema = mongoose.Schema({
         default: 0
     },
     student1: {
-        _id: mongoose.Schema.Types.ObjectId,
-        student: {
-            type: mongoose.Schema.Types.ObjectId, ref: 'user',
-            default: null
-        }
+        type: mongoose.Schema.Types.ObjectId, ref: 'user',
+        default: null
     },
     student2: {
         _id: mongoose.Schema.Types.ObjectId,
