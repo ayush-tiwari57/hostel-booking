@@ -14,18 +14,12 @@ const roomschema = mongoose.Schema({
         default: null
     },
     student2: {
-        _id: mongoose.Schema.Types.ObjectId,
-        student: {
-            type: mongoose.Schema.Types.ObjectId, ref: 'user',
-            default: null
-        }
+        type: mongoose.Schema.Types.ObjectId, ref: 'user',
+        default: null
     },
     student3: {
-        _id: mongoose.Schema.Types.ObjectId,
-        student: {
-            type: mongoose.Schema.Types.ObjectId, ref: 'user',
-            default: null
-        }
+        type: mongoose.Schema.Types.ObjectId, ref: 'user',
+        default: null
     }
 });
 
