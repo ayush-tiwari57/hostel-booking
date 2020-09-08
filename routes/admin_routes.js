@@ -2,12 +2,13 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const auth = require("./config/auth");
 const room = require("../models/room");
+const user = require("../models/user")
 
 
 //get request for room
 router.get('/room', auth,async (req,res) =>{
     try{
-        const info = await room.find().select('roomno student_count');
+        const info = await room.find().select("roomno student1 student2 student3").lean().populate('student1 student2 student3', 'name rollno');
         console.log(info);
         res.send({
             room_count: info.length,
