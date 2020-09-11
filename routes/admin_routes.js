@@ -2,7 +2,8 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const auth = require("./config/auth");
 const room = require("../models/room");
-const user = require("../models/user")
+const user = require("../models/user");
+const { route } = require("./config/login");
 
 
 //get request for room
@@ -26,7 +27,7 @@ router.get('/room', auth,async (req,res) =>{
 
 // post request for adding new room
 // required data- roomno
-router.post("/addroom",auth,async (req,res) =>{
+router.post("/room",auth,async (req,res) =>{
     try{
         const roomno = req.body.roomno;
         let data = await room.findOne({roomno});
@@ -55,4 +56,28 @@ router.post("/addroom",auth,async (req,res) =>{
     }
 });
 
+
+// resquest for delete room
+// required data - roomno
+router.delete('/room/:rno', auth, async (req,res) => {
+    try{
+        const rno = req.params.rno;
+        console.log(rno);
+        const roominfo = await room.findOneAndDelete({roomno:rno});
+        const userinfo = await user.update({roomno:rno},0,{
+            multi: true,
+            upsert: true
+        });
+        res.send({
+            roominfo,
+            userinfo
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send({
+            message: 'Something went wrong'
+        })
+    }
+})
 module.exports = router;

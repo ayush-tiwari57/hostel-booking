@@ -16,7 +16,7 @@ router.post('/bookroom', auth, async (req,res) =>{
         let data = await user.findOne({rollno});
         // console.log(data);
 
-        //Checking if the room has already been assigned to the register user
+        //Checking if the room has already been assigned to the registered user
         if(data.roomno){
             res.status(409).send({
                 message: "You have Already been assigned room",
