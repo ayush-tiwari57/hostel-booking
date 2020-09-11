@@ -97,6 +97,22 @@ router.post('/bookroom', auth, async (req,res) =>{
             message: "somthing went wrong"
         });
     }
+
+});
+//get request for user details
+router.get('/user',auth ,async (req,res) => {
+    try{
+        let rollno = req.userdata.rollno;
+        const userinfo = await user.findOne({rollno}).select('rollno name roomno');
+        res.send({
+            userinfo
+        });
+    }
+    catch(err){
+        res.status(500).send({
+            message: 'Something went wrong'
+        });
+    }
 });
 
 module.exports = router;
